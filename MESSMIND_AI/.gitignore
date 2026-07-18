@@ -1,47 +1,15 @@
 # Python
 __pycache__/
-*.py[cod]
-
-# Virtual Environment
-.venv/
-venv/
-env/
+*.pyc
 
 # Database
-database/*.db
+*.db
+
+# Local session / remember me
+remember_me.json
+
+# Uploaded files
+uploads/
 
 # VS Code
 .vscode/
-
-# OS Files
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Environment Variables
-.env# Python
-__pycache__/
-*.py[cod]
-
-# Virtual Environment
-.venv/
-venv/
-env/
-
-# Database
-database/*.db
-
-# VS Code
-.vscode/
-
-# OS Files
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-# Environment Variables
-.env

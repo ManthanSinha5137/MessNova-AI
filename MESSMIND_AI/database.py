@@ -97,9 +97,13 @@ class DatabaseManager:
 
             photo TEXT,
 
-            is_active INTEGER DEFAULT 1,
+            must_change_password INTEGER DEFAULT 1,
 
             failed_attempts INTEGER DEFAULT 0,
+
+            locked_until TIMESTAMP DEFAULT NULL,
+
+            is_active INTEGER DEFAULT 1,
 
             last_login TIMESTAMP,
 
