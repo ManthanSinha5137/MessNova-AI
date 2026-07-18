@@ -99,6 +99,10 @@ class DatabaseManager:
 
             is_active INTEGER DEFAULT 1,
 
+            failed_attempts INTEGER DEFAULT 0,
+
+            last_login TIMESTAMP,
+
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
             updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
