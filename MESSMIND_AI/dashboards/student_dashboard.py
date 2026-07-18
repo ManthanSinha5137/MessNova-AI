@@ -1,6 +1,4 @@
-def show():
+import streamlit as st
 
-    print("\n==============================")
-    print("STUDENT DASHBOARD")
-    print("==============================")
-    
+def show_student_dashboard():
+    st.title("🎓 Student Dashboard")

@@ -1,5 +1,4 @@
-def show():
+import streamlit as st
 
-    print("\n==============================")
-    print("COORDINATOR DASHBOARD")
-    print("==============================")
+def show_coordinator_dashboard():
+    st.title("🧑‍🤝‍🧑 Coordinator Dashboard")

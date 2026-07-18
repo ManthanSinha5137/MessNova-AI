@@ -1,5 +1,4 @@
-def show():
+import streamlit as st
 
-    print("\n==============================")
-    print("MANAGER DASHBOARD")
-    print("==============================")
+def show_manager_dashboard():
+    st.title("👨‍💼 Manager Dashboard")

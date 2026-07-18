@@ -1,62 +1,55 @@
-from services.auth_service import auth
+import streamlit as st
+
+from components.theme import load_theme
+from views.login_page import show_login
+
 from services.session_service import session
 from services.router_service import router
-from services.remember_me_service import remember_me
-from dashboards import (
-    super_admin_dashboard,
-    manager_dashboard,
-    coordinator_dashboard,
-    student_dashboard
+
+# Dashboard imports
+from dashboards.super_admin_dashboard import show_super_admin_dashboard
+from dashboards.manager_dashboard import show_manager_dashboard
+from dashboards.coordinator_dashboard import show_coordinator_dashboard
+from dashboards.student_dashboard import show_student_dashboard
+
+
+# ----------------------------------
+# Streamlit Config
+# ----------------------------------
+
+st.set_page_config(
+    page_title="MessNova AI",
+    page_icon="🍽️",
+    layout="wide"
 )
 
-auth.create_default_super_admin()
-saved_user = remember_me.load_user()
+load_theme()
 
-if saved_user:
+# ----------------------------------
+# Check Login
+# ----------------------------------
 
-    print("Welcome Back!")
-    print(saved_user)
+if not session.is_logged_in():
 
-    session.create_session(saved_user)
-
-    success = True
-    message = saved_user
-else:
-
-    success, message = auth.login_user(
-        "kanhaasinha9@gmail.com",
-        "Admin@123",
-        remember=True
-    )
-if success:
-
-    role = message["role"]
-
-    dashboard = router.get_dashboard(role)
-
-    print("\nDashboard Route:", dashboard)
-
-    if dashboard == "dashboards/super_admin_dashboard.py":
-        super_admin_dashboard.show()
-
-    elif dashboard == "dashboards/manager_dashboard.py":
-        manager_dashboard.show()
-
-    elif dashboard == "dashboards/coordinator_dashboard.py":
-        coordinator_dashboard.show()
-
-    elif dashboard == "dashboards/student_dashboard.py":
-        student_dashboard.show()
+    show_login()
 
 else:
 
-    print(message)
+    user = session.get_session()
 
-print("\nSession After Login")
-print(session.get_session())
+    role = user["role"]
 
-print("\nLogging Out...")
-session.logout()
+    if role == "Super Admin":
+        show_super_admin_dashboard()
 
-print("\nSession After Logout")
-print(session.get_session())
+    elif role == "Manager":
+        show_manager_dashboard()
+
+    elif role == "Coordinator":
+        show_coordinator_dashboard()
+
+    elif role == "Student":
+        show_student_dashboard()
+
+    else:
+        st.error("Unknown user role.")
