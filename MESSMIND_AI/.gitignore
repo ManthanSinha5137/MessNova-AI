@@ -1,15 +1,18 @@
-# Python
+# Python cache
 __pycache__/
 *.pyc
 
 # Database
 *.db
 
-# Local session / remember me
+# Remember me file
 remember_me.json
 
-# Uploaded files
+# VS Code settings
+.vscode/
+
+# Uploaded files (optional)
 uploads/
 
-# VS Code
-.vscode/
+# Log files
+logs/
