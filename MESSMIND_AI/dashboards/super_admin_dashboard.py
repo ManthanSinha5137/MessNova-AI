@@ -4,7 +4,9 @@ from components.sidebar import show_sidebar
 from components.navbar import show_navbar
 from components.metrics import show_metric_cards
 from database import db
-
+from components.cards import show_quick_actions
+from components.cards import show_recent_activity
+from components.charts import show_user_distribution
 
 def show_super_admin_dashboard():
 
@@ -36,3 +38,19 @@ def show_super_admin_dashboard():
         coordinators,
         admins
     )
+    st.divider()
+
+    show_quick_actions()
+
+    st.divider()
+
+    show_recent_activity()
+
+    st.divider()
+
+    show_user_distribution(
+    students,
+    managers,
+    coordinators,
+    admins
+)
