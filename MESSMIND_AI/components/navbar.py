@@ -1,14 +1,18 @@
 import streamlit as st
+from datetime import datetime
+from services.session_service import session
 
-def show_navbar(user_name="Admin", role="Super Admin"):
-    col1, col2 = st.columns([8, 2])
 
-    with col1:
+def show_navbar():
+
+    user = session.get_session()
+
+    left, right = st.columns([8, 2])
+
+    with left:
         st.title("🍽️ MessNova AI")
+        st.caption(f"Welcome back, {user['name']} 👋")
 
-    with col2:
-        st.markdown(f"""
-        **👤 {user_name}**
-
-        {role}
-        """)
+    with right:
+        st.write(f"📅 {datetime.now().strftime('%d %b %Y')}")
+        st.write(f"🕒 {datetime.now().strftime('%I:%M %p')}")
